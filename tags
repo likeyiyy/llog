@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+H_LLOG_H	llog.h	9;"	d
+LL_DEBUG	llog.h	/^    LL_DEBUG =   5,$/;"	e	enum:LogLevel
+LL_ERROR	llog.h	/^    LL_ERROR =   1,$/;"	e	enum:LogLevel
+LL_NOTICE	llog.h	/^    LL_NOTICE =  3, $/;"	e	enum:LogLevel
+LL_TRACE	llog.h	/^    LL_TRACE =   4,$/;"	e	enum:LogLevel
+LL_WARNING	llog.h	/^    LL_WARNING = 2, $/;"	e	enum:LogLevel
+LogLevel	llog.h	/^typedef  enum LogLevel {  $/;"	g
+LogLevel	llog.h	/^}LogLevel;$/;"	t	typeref:enum:LogLevel
+currenttime	llog.c	/^int currenttime(char * currTime)$/;"	f
+global_LogLevel	llog.c	/^static LogLevel  global_LogLevel;$/;"	v	file:
+global_fp	llog.c	/^static FILE * global_fp = NULL;$/;"	v	file:
+global_mutex	llog.c	/^static pthread_mutex_t global_mutex;$/;"	v	file:
+llog	llog.c	/^int llog(LogLevel level, char * format, ...)$/;"	f
+llog_init	llog.c	/^int llog_init(LogLevel level, FILE * fp)$/;"	f
+main	logtest.c	/^int main(int argc, char ** argv)$/;"	f
