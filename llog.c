@@ -23,7 +23,7 @@ int currenttime(char * currTime)
 	ptm = localtime(&tme);
 	char szTime[256];
 	memset(szTime, 0, 256);
-	sprintf(szTime, "[%d-%02d-%02d %02d:%02d:%02d]", (ptm->tm_year + 1900),
+	sprintf(szTime, "[%d-%02d-%02d %02d:%02d:%02d] ", (ptm->tm_year + 1900),
 		ptm->tm_mon + 1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
 	strcpy(currTime, szTime);
 	return 0;
@@ -40,6 +40,7 @@ int llog_init(LogLevel level, FILE * fp)
     global_LogLevel = level;
     global_fp = fp;
 
+    return 0;
 }
 
 char loglevel[6][10] = {"",
@@ -62,10 +63,8 @@ static char * getLogLevel(LogLevel level)
 }
 int llog(LogLevel level, char * format, ...)
 {
-    pthread_mutex_lock(&global_mutex);
     if(level > global_LogLevel)
     {
-        pthread_mutex_unlock(&global_mutex);
         return 0;
     }
     char temp[1024];
@@ -79,6 +78,7 @@ int llog(LogLevel level, char * format, ...)
     vsprintf(temp, format, args );
     va_end( args  );
 
+    pthread_mutex_lock(&global_mutex);
     if (global_fp)
     {
         fputs(currTime, global_fp);
